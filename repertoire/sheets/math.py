@@ -6,13 +6,7 @@ class MathSheet(Sheet):
     def __init__(self, sheet):
         self.sheet = sheet
         self.latex_image = None
-        super().__init__()
-
-    def get_date(self):
-        return self.sheet.get("next")
-
-    def set_date(self, date):
-        self.sheet["next"] = date
+        super().__init__(sheet)
 
     def print_front(self, printwrap):
         printwrap(self.sheet["name"])

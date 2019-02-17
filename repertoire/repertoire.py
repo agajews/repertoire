@@ -5,8 +5,8 @@ import click
 from getkey import getkey
 from ruamel.yaml import YAML
 
-from . import scheduler
 from .binders import binders
+from .scheduler import Scheduler
 from .term import term
 
 yaml = YAML()
@@ -44,7 +44,7 @@ def cli():
 
 def getnum():
     key = getkey()
-    while key not in "enh":
+    while key not in "renh":
         key = getkey()
     return key
 
@@ -64,9 +64,11 @@ def printwrap(text, centery=False):
 @click.argument("name")
 def rehearse(name):
     data, binder = read(name)
+    scheduler = Scheduler(binder.sheets)
 
     with term.fullscreen():
-        for sheet in scheduler.collect(binder.sheets):
+        while scheduler.today:
+            sheet = scheduler.today.pop()
             sheet.print_front(lambda text: printwrap(text, centery=True))
             getkey()
             sheet.print_back(lambda text: printwrap(text, centery=False))
@@ -75,6 +77,7 @@ def rehearse(name):
             print(term.clear())
 
     write(name, data)
+    print("All done for today :D")
 
 
 if __name__ == "__main__":

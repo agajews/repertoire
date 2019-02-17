@@ -5,13 +5,7 @@ class Quote(Sheet):
     def __init__(self, work, quote):
         self.work = work
         self.quote = quote
-        super().__init__()
-
-    def get_date(self):
-        return self.quote.get("next")
-
-    def set_date(self, date):
-        self.quote["next"] = date
+        super().__init__(quote)
 
     def print_front(self, printwrap):
         printwrap(self.quote["quote"])
