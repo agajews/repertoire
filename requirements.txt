@@ -2,7 +2,6 @@ blessings==1.7
 Click==7.0
 cycler==0.10.0
 getkey==0.6.5
-iterm2-tools==2.3
 kiwisolver==1.0.1
 mpmath==1.1.0
 numpy==1.16.1
@@ -10,4 +9,3 @@ pyparsing==2.3.1
 python-dateutil==2.8.0
 ruamel.yaml==0.15.88
 six==1.12.0
-sympy==1.3
