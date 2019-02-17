@@ -25,7 +25,7 @@ def read(name):
     assert "binder" in data, "Missing binder"
     assert data["binder"] in binders, "Invalid binder"
     assert "sheets" in data, "Missing sheets"
-    print(data)
+    # print(data)
     binder = binders[data["binder"]](data["sheets"])
     return data, binder
 
@@ -74,7 +74,6 @@ def rehearse(name):
             scheduler.schedule(sheet, confidence)
             print(term.clear())
 
-    print("writing")
     write(name, data)
 
 
